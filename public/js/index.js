@@ -4,31 +4,32 @@ const qs = q => document.querySelector(q)
 
 const $ = id => document.getElementById(id)
 
-window.onload = () => {
-    /* capturar los siguientes elementos: <main>, <h2>, <a> y <p>, */
-    let main = qs('main'); //capturando main
-    let h2 = document.querySelector('.subtitulo'); //capturando selector subtitulo de h2
-    let a = qs('a') //capturando a
-    let parrafos = document.querySelectorAll('p') //capturando todos los p
+window.addEventListener ('load', () => {
+
+    let container = qs('main.container');
+    let subtitulo = qs('h2.subtitulo');
+    let enlace = qs('a#enlace')
+    let parrafos = document.querySelectorAll('p')
+    const logoDH = qs('figure.logoDH');
+    const menu = $('menu');
     
-    /* utilizar un prompt */
-    let nombre = prompt('Decime tu nombre') //capturando nombre
+    let nombre = prompt('Decime tu nombre')
     
     if(nombre){
-        h2.innerText += ' ' + nombre; // en caso que exista agregarlo como texto al h2
+        subtitulo.innerText += ' ' + nombre;
     }else{
-        h2.innerText += ' invitado' // en caso que no exista agregar 'invitado' como texto al h2
+        subtitulo.innerText += ' invitado'
     } 
 
     /* agregando estilos */
-    h2.style.textTransform = 'uppercase'; // darle uppercase al h2
-    a.style.color = "#E51B3E"; //agregarle color al elemento a
+    subtitulo.style.textTransform = 'uppercase';
+    enlace.style.color = "#E51B3E";
 
     /* utilización de confirm */
-    let response = confirm('¿Querés cambiar el color de fondo?'); //agregar un fondo o no
+    let fondo = confirm('¿Querés cambiar el color de fondo?');
 
-    if(response){
-        document.body.classList.add('fondo') // true => agrega la clase fondo al body
+    if(fondo){
+        document.body.classList.add('fondo')
     }
     
     /* agregar clases segun paridad */
@@ -42,8 +43,17 @@ window.onload = () => {
         
     }
 
-    /* agregando estilo al main */
-    main.style.display = "block"; // display block
-}
+    container.style.display = "block";
+
+    /* Agregando interacción con eventos ======================= */
+    logoDH.addEventListener('click', () => {
+        menu.classList.toggle('mostrar')
+    })
+
+    menu.addEventListener('mouseleave', () => {
+        menu.classList.remove('mostrar')
+    })
+    /* Fin Agregando interacción con eventos ======================= */
+})
 
 

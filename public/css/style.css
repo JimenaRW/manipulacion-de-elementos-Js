@@ -89,3 +89,35 @@ figure{
   margin: auto;
   width: 20%;
 }
+
+/* Estilos para el menu */
+#menu {
+  position: fixed;
+  top: 100px;
+  width: 200px;
+  height: 100%;
+  background-color: rgba(37, 37, 37, 0.88);
+  left: -200px;
+  transition: all ease-in-out .5s;
+}
+
+#menu ul li {
+  color: #fff;
+  list-style: none;
+  text-align: center;
+  padding: 15px 5px;
+  border-bottom: 1px solid rgb(100, 100, 100, .88);
+}
+
+#menu.mostrar {
+  left: 0
+}
+
+.logoDH {
+  cursor: pointer;
+}
+
+.toggle img{
+  display: block;
+  width: 40px;
+}

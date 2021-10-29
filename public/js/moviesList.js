@@ -1,25 +1,39 @@
-console.log('index.js vinculado correctamente!!!');
+console.log('movies.js vinculado correctamente!!!');
 
 const qs = q => document.querySelector(q)
 
 const $ = id => document.getElementById(id)
 
-window.onload = () => {
-    /* capturar los siguientes elementos: <body> y <h1> */
-    let body = qs(body);
-    let h1 = qs(h1);
+window.addEventListener('load', () => {
+    
+    let body = qs('body');
+    let h1 = qs('h1');
+    let logo = qs('figure#logoDH')
 
-    /* utilizar prompt */
-    let oscuro = prompt("¿Desea modo oscuro?"); //capturando eleccion
+/* 
+    // Manipulando elementos con JavaScript ===========
+
+    let oscuro = confirm("¿Desea modo oscuro?");
 
     if (oscuro) {
-        body.style.backgroundColor = "#7f7f7f​"; // en caso de true cambia el fondo
-        document.body.classList.add("fondoMoviesList"); // en casp de true agregar clase
+        body.style.backgroundColor = "#7f7f7f​";
+        body.classList.add("fondoMoviesList");
     }
+    // Fin Manipulando elementos con JavaScript ===========
+*/
+    
+    //   Agregando interacción con eventos =======================
+    logo.addEventListener('mouseover', () => {
+        console.log(logo)
+        body.style.backgroundColor = "#7f7f7f"
+        body.classList.add("fondoMoviesList")
+
+    })
+    // Fin Agregando interacción con eventos =======================
 
     h1.innerText = "LISTADO DE PELÍCULAS"; // agregando texto
-    h1.style.color = white; //agregando color de fuente
-    h1.style.backgroundColor = teal; //agregando color de fondo
+    h1.style.color = 'white'; //agregando color de fuente
+    h1.style.backgroundColor = 'teal'; //agregando color de fondo
     h1.style.padding = "20px";
 
-}
+})

@@ -1,23 +1,70 @@
-console.log('Verificando conexión exitosa');
+console.log('moviesAdd.js vinculado correctamente!!!');
 
-const qs = q = docuemnt.querySelector(q);
+const qs = q => document.querySelector(q);
 
-const $ = id = document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-window.onload = () => {
-    /* capturar los siguientes elementos: <h1>, <section> y <article> */
+window.addEventListener('load', () => {
+    // Manipulando elementos con Javascript ============
 
-    let h1 = qs(h1);
-    let section = qs(section);
-    let article = qs(article);
+    let titulo = qs('h1.moviesAddTitulo');
+    let section = qs('section');
+    let article = qs('article');
+    let inputTitle = qs('input#title');
+    let estadoSecreto = 0;
 
-    /* sobre h1 */
-    h1.innerText = "AGREGAR PELÍCULAS"; // agregar texto
-    h1.classList.add("titulo"); // agregando clase
+    /* sobre titulo */
+    titulo.innerText = "AGREGAR PELÍCULAS";
+    titulo.classList.add("titulo");
 
     /* sobre artículo */
-    article.classList.add("fondoTransparente"); //agregar clase
-    section.classList.add("fondoCRUD"); //agregar clase
+    article.classList.add("fondoTransparente");
+    section.classList.add("fondoCRUD");
 
-}
+    // Fin Manipulando elementos con Javascript ============
 
+    // Agregando interacción con eventos =======================
+    titulo.addEventListener('mouseover', function () {
+        this.style.color = "red";
+    })
+    titulo.addEventListener('mouseout', function () {
+        this.style.color = "blue";
+    })
+
+    const checkKey = (key) => {
+        switch (true) {
+            case key == 's' && estadoSecreto === 0:
+                ++estadoSecreto;
+                break;
+            case key == 'e' && estadoSecreto === 1:
+                ++estadoSecreto;
+                break;
+            case key == 'c' && estadoSecreto === 2:
+                ++estadoSecreto;
+                break;
+            case key == 'r' && estadoSecreto === 3:
+                ++estadoSecreto;
+                break;
+            case key == 'e' && estadoSecreto === 4:
+                ++estadoSecreto;
+                break;
+            case key == 't' && estadoSecreto === 5:
+                ++estadoSecreto;
+                break;
+            case key == 'o' && estadoSecreto === 6:
+                estadoSecreto = 0;
+                alert('SECRETO MÁGICO!!')
+                break;
+
+            default:
+                estadoSecreto = 0;
+                break;
+        }
+    }
+    inputTitle.addEventListener('keypress', (e) => {
+        checkKey(e.key)
+        console.log(estadoSecreto)
+    })
+     // Fin Agregando interacción con eventos =======================
+
+})

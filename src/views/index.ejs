@@ -1,13 +1,20 @@
 <%- include('./partials/head', { title }) %> 
   <body>
     <main class="container">
+      <div id="menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/movies">Listado de Películas</a></li>
+          <li><a href="/movies/add">Agregar una Pelicula</a></li>
+        </ul>
+      </div>
       <figure class="logoDH">
         <img src="/img/logo-DH.png" alt="Logo Digital House">
       </figure>
       <section class="contenido">
         <h1 class="tituloPrincipal"><%= title %></h1>
         <h2 class="subtitulo">Bienvenido </h2>
-        <h2><a  href="/movies">Listado de Películas</a></h2>
+        <h2><a id="enlace" href="/movies">Listado de Películas</a></h2>
       </section>
       <br><br>
       <section class="informacion">
