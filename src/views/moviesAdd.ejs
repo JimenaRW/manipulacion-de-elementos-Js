@@ -7,26 +7,47 @@
     <br>
     <section id="formulario" >
         <article >
-            <form action="/movies/create" method="POST">
+            <form id="form-add" action="/movies/create" method="POST">
+                <div id="error">
+                    <h4 id="error-msg"></h4>
+                </div>
                 <label for="title">Titulo </label>
-                <p><input type="text" name="title" id="title" required></p>
+                <div class="input-form">
+                    <p><input type="text" name="title" id="title" ></p>
+                    <p id="title-msg"></p>
+                </div>
                 <label for="rating">Calificación </label>
-                <p><input type="number" name="rating" id="" required> </p>
+                <div class="input-form">
+                    <p><input type="number" name="rating" id="rating" ></p>
+                    <p id="rating-msg"></p>
+                </div>
                 <label for="awards">Premios </label>
-                <p><input type="number" name="awards" id="" required></p>
+                <div class="input-form">
+                    <p><input type="number" name="awards" id="awards" ></p>
+                    <p id="awards-msg"></p>
+                </div>
                 <label for="release_date">Fecha de creación </label>
-                <p><input type="date" name="release_date" id="" required></p>
+                <div class="input-form">
+                    <p><input type="date" name="release_date" id="release_date" ></p>
+                    <p id="release_date-msg"></p>
+                </div>
                 <label for="length">Duración </label>
-                <p><input type="number" name="length" id="" required></p>
-                <label for="genreID">Género </label>
-                <p>
-                    <select name="genre_id" id="" required>
-                        <option value="" disabled selected>- Seleccione el género - </option>
-                        <% allGenres.forEach(genre => { %>
-                        <option value="<%= genre.id %>"><%= genre.name %></option>
-                        <% }); %>
-                    </select>
-                </p>
+                <div class="input-form">
+                    <p><input type="number" name="length" id="length" ></p>
+                    <p id="length-msg"></p>
+                </div>
+                <label for="genre_id">Género </label>
+                <div class="input-form">
+                    <p>
+                        <select name="genre_id" id="genre_id" >
+                            <option value="" disabled selected>- Seleccione el género - </option>
+                            <% allGenres.forEach(genre => { %>
+                            <option value="<%= genre.id %>"><%= genre.name %></option>
+                            <% }); %>
+                        </select>
+                    </p>
+                    <p id="genre_id-msg"></p>
+                </div>
                 <br>
                 <p> <button class="botonAgregar" type="submit">Agregar</button>
                 
@@ -35,4 +56,5 @@
         </article>
     </section>
     <script src="/js/moviesAdd.js"></script>
+    <script src="/js/moviesAddValidations.js"></script>
 <%- include('./partials/bodyEnd.ejs') %> 
