@@ -4,7 +4,7 @@
   padding: 0;
 }
 body {
-  padding: 50px;
+  /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 .container{
@@ -32,6 +32,9 @@ body {
   background-image: url('/img/vikingsposter.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  height: 100vh;
 }
 .fondoMoviesList{
   background-image: url('/img/avengers.jpg');
@@ -127,6 +130,7 @@ figure{
 input{
   padding: 3px 4px;
   border: 1px solid rgba(86, 96, 72, 0.7);
+  width: 100%
 }
 input:focus-visible{
   border: 1px solid rgba(86, 96, 72, 0.7);
@@ -179,3 +183,155 @@ input:focus-visible{
 select#genre_id {
   padding: 3px 6px;
 }
+
+/* -------------- Asincronismo con JavaScript ----------------- */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Dosis', sans-serif;
+  line-height: 1.6;
+  color: #666;
+  background: #F6F6F6;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  padding: 1.5rem 2.5rem;
+  background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+img {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+}
+p.btn-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card p {
+  padding: 0 2.5rem 2.5rem;
+  margin: 0;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 1rem;
+  background: white;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, .1);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all .2s linear;
+}
+
+.card:hover {
+  box-shadow: 2px 8px 45px rgba(0, 0, 0, .15);
+  transform: translate3D(0, -2px, 0);
+}
+.action {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.botonAgregar , .botonModificar{
+  color: white;
+  background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  margin: 5px;
+}
+.botonBorrar{
+  color: white;
+  background-image: linear-gradient(120deg, #BB2D3B 0%, #a6c1ee 100%);
+  padding: 10px;
+  border-radius: 10px;
+  border: 0;
+  margin: 5px;
+}
+.formulario{
+  margin: auto;
+  width: max(min(300px), 40%);
+  border-radius: 10px;
+}
+.formulario label {
+  padding: 1.5rem 2.5rem;
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+  
+}
+.formulario input, 
+.formulario select{
+  width: 100%;
+  height: 25px;
+  margin: 10px 0;
+  padding-left: 7px;
+}
+.contain-input {
+  padding: 0 23px 0 23px;
+}
+#info {
+  width: max-content;
+  position: fixed;
+  bottom: 29px;
+  left: 38px;
+}
+.response {
+  background-image: linear-gradient(120deg, #fbc2eb 0%, #a6c1ee 100%);
+  color: white;
+  padding: 11px 57px;
+  font-size: 1.1rem;
+  border-radius: 2px;
+}
+.fail {
+  background-image: linear-gradient(120deg, #BB2D3B 0%, #a6c1ee 100%);
+}
+@media (min-width: 320px) {
+  body {
+    padding: 10px;
+  }
+} 
+@media (min-width: 425px ){
+  body {
+    padding: 50px;
+  }
+}
+@media screen and (min-width: 600px) {
+  .card {
+    flex: 1 1 calc(50% - 2rem);
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .card {
+    flex: 1 1 calc(33% - 2rem);
+  }
+}
+
+.card:nth-child(2n) h1 {
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+.card:nth-child(4n) h1 {
+  background-image: linear-gradient(120deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.card:nth-child(5n) h1 {
+  background-image: linear-gradient(120deg, #ffc3a0 0%, #ffafbd 100%);
+}
+

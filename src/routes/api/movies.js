@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const moviesAPIController = require('../../controllers/api/moviesAPIController');
 
-//Rutas
+//Rutas '/api/movies'
 //Listado de películas
 router.get('/', moviesAPIController.list);
 //Detalle de una película
@@ -12,7 +12,7 @@ router.get('/recomended/:rating', moviesAPIController.recomended);
 //Agregar una película
 router.post('/create', moviesAPIController.create);
 //Modificar una película
-router.put('/update/:id', moviesAPIController.update);
+router.put('/edit/:id', moviesAPIController.update);
 //Eliminar una película
 router.delete('/delete/:id', moviesAPIController.destroy);
 

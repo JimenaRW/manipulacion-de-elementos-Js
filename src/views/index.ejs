@@ -1,6 +1,6 @@
 <%- include('./partials/head', { title }) %> 
-  <body>
-    <main class="container">
+  <body class="home">
+    <main>
       <div id="menu">
         <ul>
           <li><a href="/">Home</a></li>
@@ -16,6 +16,10 @@
         <h2 class="subtitulo">Bienvenido </h2>
         <h2><a id="enlace" href="/movies">Listado de Películas</a></h2>
       </section>
+      <div id="root">
+        <h1 class="main">Listado de Películas</h1>
+        <div class="container"></div>
+      </div>
       <br><br>
       <section class="informacion">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla natus ipsum minima ducimus possimus quo, nam debitis odit molestiae unde doloribus temporibus dolorum soluta, fugit quasi nesciunt dolorem rem incidunt.</p>
@@ -24,5 +28,5 @@
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A culpa facere ipsum quia perferendis unde aliquid obcaecati qui voluptate, in est aut minima quas sunt dolores. Eligendi harum reprehenderit impedit.</p>
       </section>
     </main>
-    <script src="/js/index.js"></script>
+    
 <%- include('./partials/bodyEnd.ejs') %> 

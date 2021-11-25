@@ -12,21 +12,28 @@ const Actors = db.Actor;
 
 
 const moviesAPIController = {
-    'list': (req, res) => {
-        db.Movie.findAll({
-            include: ['genre']
-        })
-        .then(movies => {
+    'list':async (req, res) => {
+        try {
+            let movies = await db.Movie
+                .findAll({
+                    include: ['genre']
+                })
             let respuesta = {
+                status : 200,
                 meta: {
-                    status : 200,
-                    total: movies.length,
-                    url: 'api/movies'
+                    amount: movies.length,
+                    link: `${req.protocol}://${req.get('host')}${req.originalUrl}`
                 },
                 data: movies
             }
-                res.json(respuesta);
+            return res.status(200).json(respuesta);
+        }
+        catch(error) {
+            return res.status(error.status || 500).json({
+                status: error.status || 500,
+                message: error.message
             })
+        }
     },
     
     'detail': (req, res) => {
@@ -39,7 +46,7 @@ const moviesAPIController = {
                     meta: {
                         status: 200,
                         total: movie.length,
-                        url: '/api/movie/:id'
+                        url: '/api/movie/' + req.params.id
                     },
                     data: movie
                 }
@@ -108,6 +115,8 @@ const moviesAPIController = {
     },
     update: (req,res) => {
         let movieId = req.params.id;
+        console.log('====================================> lo que viene por req.body ====================================>')
+        console.log(req.body)
         Movies.update(
             {
                 title: req.body.title,
@@ -127,7 +136,7 @@ const moviesAPIController = {
                     meta: {
                         status: 200,
                         total: confirm.length,
-                        url: 'api/movies/update/:id'
+                        url: '/api/movies/update/' + movieId
                     },
                     data:confirm
                 }
@@ -136,7 +145,7 @@ const moviesAPIController = {
                     meta: {
                         status: 204,
                         total: confirm.length,
-                        url: 'api/movies/update/:id'
+                        url: '/api/movies/update/' + movieId
                     },
                     data:confirm
                 }

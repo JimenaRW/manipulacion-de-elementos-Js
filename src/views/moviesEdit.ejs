@@ -1,41 +1,66 @@
-<%- include('./partials/head', { title : "Editar Película" }) %> 
-<body>
-    <figure>
-        <img src="/img/logo-DH.png" alt="Logo Digital House">
-      </figure>
-    <h1 class="titulo">Película Editada:  <%= Movie.title %></h1>
-    <section class="formulario">
-        
-            <form action="/movies/update/<%= Movie.id %>?_method=PUT" method="POST">
-                <label for="title">Título </label>
-                <p><input type="text" name="title" id="" value="<%= Movie.title %>" required></p>
-                <label for="rating">Calificación </label>
-                <p><input type="number" name="rating" id="" value="<%= Movie.rating %>" required></p>
-                <label for="awards">Premios </label>
-                <p><input type="number" name="awards" id="" value="<%= Movie.awards %>" required></p>
-                <label for="release_date">Fecha de creación </label>
-                <p><input type="date" name="release_date" id="" value="<%= Movie.release_date %> required"></p>
-                <label for="length">Duración </label>
-                <p><input type="number" name="length" id="" value="<%= Movie.length %>" required></p>
-                <label for="genre_id">Género </label>
-                <p>
-                    <select name="genre_id" id="" required>
-                        <% allGenres.forEach(genre => { %>
-                        <option value="<%= genre.id %>" <% if (Movie.genre.id == genre.id) { %><%= 'selected' %><% }; %>><%= genre.name %></option>
-                        <% }); %>
-                    </select>
-                </p>
+<%- include('./partials/head', { title : "Editar Película" }) %>
 
-        <!--
+    <body>
+        <figure>
+            <img src="/img/logo-DH.png" alt="Logo Digital House">
+        </figure>
+        <h1 class="titulo">Película Editada: <%= Movie.title %>
+        </h1>
+        <section class="card formulario">
+
+            <form  id="form-edit" method="POST">
+                <h1><%= Movie.title %></h1>
+                <input type="hidden" name="id">
+                <div class="contain-input">
+                    <label for="title">Título </label>
+                    <input type="text" name="title" id="title" value="<%= Movie.title %>" required>
+                </div>
+                <div class="contain-input">
+                    <label for="rating">Calificación </label>
+                    <input type="number" name="rating" id="rating" value="<%= Movie.rating %>" required>
+                </div>
+                <div class="contain-input">
+                    <label for="awards">Premios </label>
+                    <input type="number" name="awards" id="awards" value="<%= Movie.awards %>" required>
+                </div>
+                <div class="contain-input">
+                    <label for="release_date">Fecha de creación </label>
+                    <input type="date" name="release_date" id="release_date" value="<%= Movie.release_date %>" required>
+                </div>
+                <div class="contain-input">
+                    <label for="length">Duración </label>
+                    <input type="number" name="length" id="length" value="<%= Movie.length %>" required>
+                </div>
+                <div class="contain-input">
+                    <label for="genre_id">Género </label>
+                    <select name="genre_id" id="genre_id" required>
+                        <% allGenres.forEach(genre=> { %>
+                            <option value="<%= genre.id %>" <% if (Movie.genre.id==genre.id) { %>
+                                <%= 'selected' %>
+                                    <% }; %>><%= genre.name %>
+                            </option>
+                            <% }); %>
+                    </select>
+                </div>
+                <!--
                 <label for="genre_id">Genre ID </label>
-                <p><input type="number" name="genre_id" id="" value="<%= Movie.genre_id %>"></p>
+                <input type="number" name="genre_id" id="" value="<%= Movie.genre_id %>">
             -->
-                
                 <br>
-                <p> <button class="botonAgregar" type="submit">Actualizar</button>
-            
-                <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+                <div class="action">
+                    <input type="submit" class="botonAgregar" value="Actualizar" style="
+                    width: max-content;
+                    height: 37px;
+                ">
+                    <a class="botonVolver" href="/movies">Listado de Películas</a>
+                </div>
             </form>
-        
-    </section>
-<%- include('./partials/bodyEnd.ejs') %> 
+            
+        </section>
+        <div id="info"></div>
+        <script>
+
+
+
+        </script>
+        <%- include('./partials/bodyEnd.ejs') %>

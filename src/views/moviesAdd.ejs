@@ -1,11 +1,11 @@
 <%- include('./partials/head', { title : "Movie add" }) %> 
-<body>
+<body class="movieAdd">
     <figure>
         <img src="/img/logo-DH.png" alt="Logo Digital House">
       </figure>
     <h1 class="moviesAddTitulo"></h1>
     <br>
-    <section id="formulario" >
+    <section id="" >
         <article >
             <form id="form-add" action="/movies/create" method="POST">
                 <div id="error">
@@ -49,12 +49,11 @@
                     <p id="genre_id-msg"></p>
                 </div>
                 <br>
-                <p> <button class="botonAgregar" type="submit">Agregar</button>
+                <p class="btn-container"> <button class="botonAgregar" type="submit">Agregar</button>
                 
                 <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
             </form>
         </article>
     </section>
-    <script src="/js/moviesAdd.js"></script>
-    <script src="/js/moviesAddValidations.js"></script>
+    
 <%- include('./partials/bodyEnd.ejs') %> 

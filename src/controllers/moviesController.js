@@ -21,13 +21,17 @@ const moviesController = {
             })
     },
     'detail': (req, res) => {
+        /* 
+        // Para trabajar sin API
         db.Movie.findByPk(req.params.id,
             {
                 include : ['genre']
             })
             .then(movie => {
                 res.render('moviesDetail.ejs', {movie});
-            });
+            }); 
+        */
+       res.render('moviesDetail')
     },
     'new': (req, res) => {
         db.Movie.findAll({
@@ -89,14 +93,18 @@ const moviesController = {
         Promise
         .all([promMovies, promGenres, promActors])
         .then(([Movie, allGenres, allActors]) => {
+            
             //Movie.release_date = moment( new Date(Movie.release_date)).toLocaleDateString();
             Movie.release_date = moment( new Date(Movie.release_date)).format('L');
             //new Date("Sun Jan 03 1999 21:00:00 GMT-0300 (hora estándar de Argentina)").toLocaleDateString()
             //return res.send(Movie.release_date);
+            
             return res.render(path.resolve(__dirname, '..', 'views',  'moviesEdit'), {Movie,allGenres,allActors})})
         .catch(error => res.send(error))
     },
     update: function (req,res) {
+        /* 
+        // update desde controller
         let movieId = req.params.id;
         Movies
         .update(
@@ -113,7 +121,10 @@ const moviesController = {
             })
         .then(()=> {
             return res.redirect('/movies')})            
-        .catch(error => res.send(error))
+        .catch(error => res.send(error)) 
+        */
+       //update desde MoviesApiController
+        return res.redirect('/movies')
     },
     delete: function (req,res) {
         let movieId = req.params.id;
