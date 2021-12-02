@@ -1,66 +1,72 @@
 <%- include('./partials/head', { title : "Editar Película" }) %>
 
     <body>
-        <figure>
-            <img src="/img/logo-DH.png" alt="Logo Digital House">
-        </figure>
-        <h1 class="titulo">Película Editada: <%= Movie.title %>
-        </h1>
-        <section class="card formulario">
-
-            <form  id="form-edit" method="POST">
-                <h1><%= Movie.title %></h1>
-                <input type="hidden" name="id">
-                <div class="contain-input">
-                    <label for="title">Título </label>
-                    <input type="text" name="title" id="title" value="<%= Movie.title %>" required>
-                </div>
-                <div class="contain-input">
-                    <label for="rating">Calificación </label>
-                    <input type="number" name="rating" id="rating" value="<%= Movie.rating %>" required>
-                </div>
-                <div class="contain-input">
-                    <label for="awards">Premios </label>
-                    <input type="number" name="awards" id="awards" value="<%= Movie.awards %>" required>
-                </div>
-                <div class="contain-input">
-                    <label for="release_date">Fecha de creación </label>
-                    <input type="date" name="release_date" id="release_date" value="<%= Movie.release_date %>" required>
-                </div>
-                <div class="contain-input">
-                    <label for="length">Duración </label>
-                    <input type="number" name="length" id="length" value="<%= Movie.length %>" required>
-                </div>
-                <div class="contain-input">
-                    <label for="genre_id">Género </label>
-                    <select name="genre_id" id="genre_id" required>
-                        <% allGenres.forEach(genre=> { %>
-                            <option value="<%= genre.id %>" <% if (Movie.genre.id==genre.id) { %>
-                                <%= 'selected' %>
-                                    <% }; %>><%= genre.name %>
-                            </option>
-                            <% }); %>
-                    </select>
-                </div>
-                <!--
-                <label for="genre_id">Genre ID </label>
-                <input type="number" name="genre_id" id="" value="<%= Movie.genre_id %>">
-            -->
-                <br>
-                <div class="action">
-                    <input type="submit" class="botonAgregar" value="Actualizar" style="
-                    width: max-content;
-                    height: 37px;
-                ">
-                    <a class="botonVolver" href="/movies">Listado de Películas</a>
-                </div>
-            </form>
+        <%- include('./partials/header') %> 
+        <main>
+            <h1 class="titulo">Película Editada: <%= Movie.title %>
+            </h1>
+            <section>
             
-        </section>
-        <div id="info"></div>
-        <script>
+                <form id="form-edit" class="card formulario" method="PUT">
+                    <h1><%= Movie.title %></h1>
+                    <input type="hidden" name="id" value="<%= Movie.id %> ">
+                    <div id="error">
+                        <h4 id="error-edit-msg"></h4>
+                    </div>
+                    <div class="contain-input">
+                        <label for="title">Título </label>
+                        <input type="text" name="title" id="title-edit" value="<%= Movie.title %>" required>
+                        <p id="title-edit-msg"></p>
+                    </div>
+                    <div class="contain-input">
+                        <label for="rating">Calificación </label>
+                        <input type="number" name="rating" id="rating-edit" value="<%= Movie.rating %>" required>
+                        <p id="rating-edit-msg"></p>
 
+                    </div>
+                    <div class="contain-input">
+                        <label for="awards">Premios </label>
+                        <input type="number" name="awards" id="awards-edit" value="<%= Movie.awards %>" required>
+                        <p id="awards-edit-msg"></p>
 
+                    </div>
+                    <div class="contain-input">
+                        <label for="release_date">Fecha de creación </label>
+                        <input type="date" name="release_date" id="release_date-edit" value="<%= Movie.release_date %>" required>
+                        <p id="release_date-edit-msg"></p>
 
-        </script>
+                    </div>
+                    <div class="contain-input">
+                        <label for="length">Duración </label>
+                        <input type="number" name="length" id="length-edit" value="<%= Movie.length %>" required>
+                        <p id="length-edit-msg"></p>
+
+                    </div>
+                    <div class="contain-input">
+                        <label for="genre_id">Género </label>
+                        <select name="genre_id" id="genre_id-edit" required>
+                            <% allGenres.forEach(genre=> { %>
+                                <option value="<%= genre.id %>" <% if (Movie.genre.id==genre.id) { %>
+                                    <%= 'selected' %>
+                                        <% }; %>><%= genre.name %>
+                                </option>
+                                <% }); %>
+                        </select>
+                        <p id="genre_id-edit-msg"></p>
+
+                    </div>
+                    
+                    <br>
+                    <div class="action">
+                        <input type="submit" id="actualizar" class="botonAgregar" value="Actualizar" style="
+                        width: max-content;
+                        height: 37px;
+                    ">
+                        <a class="botonVolver" href="/movies">Listado de Películas</a>
+                    </div>
+                </form>
+                
+            </section>
+            <div id="info"></div>
+        </main>
         <%- include('./partials/bodyEnd.ejs') %>

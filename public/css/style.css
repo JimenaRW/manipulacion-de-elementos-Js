@@ -7,12 +7,11 @@ body {
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+
 .container{
   display: none;
 }
-.contenido{
-  padding-top: 160px;
-}
+
 .destacadoPar{
   padding: 15px;
   text-align: justify;
@@ -51,7 +50,7 @@ body {
 }
 .fondoTransparente{
   background-color:rgba(189,199,191,0.7);
-  width: 30%;
+  width: max-content;
   padding:10px;
   margin: auto;
   text-align: center;
@@ -65,7 +64,7 @@ img{
   width: 100%;
 }
 figure{
-  width: 20%;
+  width: 250px;
 }
 .titulo{
   text-align: center;
@@ -88,20 +87,18 @@ figure{
   padding: 10px;
   border-radius: 10px;
 }
-.formulario{
-  margin: auto;
-  width: 20%;
-}
+
 
 /* Estilos para el menu */
 #menu {
   position: fixed;
-  top: 100px;
+  top: 109px;
   width: 200px;
   height: 100%;
   background-color: rgba(37, 37, 37, 0.88);
   left: -200px;
   transition: all ease-in-out .5s;
+  z-index : 11;
 }
 
 #menu ul li {
@@ -144,19 +141,11 @@ input:focus-visible{
   border: 1px solid #0066ff7a;
   border-radius: 3px;
 }
-.info-input {
-  background-color: lightblue;
-  color: blue;
-  padding: 10px;
-  font-size: 11px;
-  border-radius: 3px;
-  width: 140px;
-  position: absolute;
-  right: -155px;
-  top: -5px;
-  
+form.card p {
+  padding: 0
 }
-.error-input {
+form.card p.error-input,
+form.card p.info-input {
   background-color: #ff000070;
   padding: 5px 8px;
   border-radius: 3px;
@@ -165,9 +154,13 @@ input:focus-visible{
   margin: 3px auto;
   text-align: center;
 }
+form.card p.info-input {
+  background-color: rgba(65, 105, 225, 0.829);
+  color: whitesmoke;
+  
+}
 .input-form {
   position: relative;
-  width: 186px;
   margin: auto;
 }
 #error {
@@ -206,6 +199,8 @@ h1 {
   margin: 0 0 2rem 0;
   font-size: 1.5rem;
   color: white;
+  display: flex;
+  justify-content: space-around;
 }
 
 img {
@@ -221,6 +216,7 @@ p.btn-container {
 .card p {
   padding: 0 2.5rem 2.5rem;
   margin: 0;
+  background-color: white;
 }
 .container {
   display: flex;
@@ -264,11 +260,7 @@ p.btn-container {
   border: 0;
   margin: 5px;
 }
-.formulario{
-  margin: auto;
-  width: max(min(300px), 40%);
-  border-radius: 10px;
-}
+
 .formulario label {
   padding: 1.5rem 2.5rem;
   margin: 0 0 2rem 0;
@@ -283,6 +275,7 @@ p.btn-container {
   padding-left: 7px;
 }
 .contain-input {
+  position: relative;
   padding: 0 23px 0 23px;
 }
 #info {
@@ -301,15 +294,54 @@ p.btn-container {
 .fail {
   background-image: linear-gradient(120deg, #BB2D3B 0%, #a6c1ee 100%);
 }
+
 @media (min-width: 320px) {
-  body {
+  main {
     padding: 10px;
+    padding-top: 120px
+  }
+  .card {
+    position: relative;
+    width: 100%;
+  }
+  #form-add {
+    width: 220px;
+    margin: auto;
+  }
+  .input-form {
+    width: 186px;
+  }
+  .formulario{
+    margin: auto;
+    width: max(50%, min(300px));
+    border-radius: 10px;
   }
 } 
+.check-fav {
+  z-index: 100;
+  width: max-content;
+}
+input.fav,
+.fav-relleno {
+  display: none;
+}
+.fav i,
+.fav-relleno i {
+  padding: 7px;
+  font-size: 1.3rem;
+}
+input:checked ~ .fav-relleno {
+  display: block;
+}
+input:checked ~ .fav {
+  display: none;
+}
 @media (min-width: 425px ){
-  body {
+  main {
     padding: 50px;
+    padding-top: 120px
   }
+
 }
 @media screen and (min-width: 600px) {
   .card {
@@ -321,6 +353,10 @@ p.btn-container {
   .card {
     flex: 1 1 calc(33% - 2rem);
   }
+  .formulario {
+    max-width: 500px;
+  }
+  
 }
 
 .card:nth-child(2n) h1 {

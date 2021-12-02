@@ -2,6 +2,9 @@
     
     const qs = q => document.querySelector(q);
     const $ = id => document.getElementById(id);
+    const arrayfy = (string) => string.split(',');
+    
+    let array = arrayfy(localStorage.getItem('movieFav'));
 
 </script>
 
@@ -11,4 +14,6 @@
 <script src="/js/moviesAdd.js"></script>
 <script src="/js/moviesAddValidations.js"></script>
 <script src="/js/formulario.js"></script>
+<script src="/js/favoritas.js" type="text/javascript"></script>
+<script src="/js/localStorage.js" type="text/javascript"></script>
 <script src="/js/edit-form.js"></script>

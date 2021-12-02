@@ -1,23 +1,23 @@
 <%- include('./partials/head', { title : "Listado de Películas" }) %> 
 <body>
-    <figure id="logoDH">
-        <img src="/img/logo-DH.png" alt="Logo Digital House">
-    </figure>
-    <h1 class="moviesListTitulo"></h1>
-    <br>
-    <p>
-        <a class="botonAgregar" href="/movies/add">Agregar una Pelicula</a>
-        <a class="botonVolver" href="/">inicio</a>
-
-    </p>
-    <br>
-    <ul>
-        <% for( let i = 0; i < movies.length; i++ ) { %>
-        <li>
-            <a  href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
-        </li>
-        <% } %>
-
-    </ul>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1 class="moviesListTitulo"></h1>
+        <br>
+        <p>
+            <a class="botonAgregar" href="/movies/add">Agregar una Pelicula</a>
+            <a class="botonVolver" href="/">inicio</a>
+        
+        </p>
+        <br>
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+            <li>
+                <a  href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
+            </li>
+            <% } %>
+        
+        </ul>
+    </main>
     <script src="/js/moviesList.js"></script>
 <%- include('./partials/bodyEnd.ejs') %> 

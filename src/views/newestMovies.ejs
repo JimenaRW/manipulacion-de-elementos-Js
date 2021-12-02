@@ -1,17 +1,17 @@
 <%- include('./partials/head', { title : "Películas ordenas por fecha" }) %> 
 <body class="newMovie">
-    <figure>
-        <img src="/img/logo-DH.png" alt="Logo Digital House">
-    </figure>
-    <h1>PELIÍCULAS ORDENADASR FECHA</h1>
-    <ul>
-        <% for( let i = 0; i < movies.length; i++ ) { %>
-        <li>
-            <a href="/movies/detail/<%=movies[i].id%>"><%= movies[i].title %> </a> <br>
-            <%= 'RELEASE DATE: ' + movies[i].release_date %> 
-        </li>
-        <% } %>
-        
-    </ul>
+    <%- include('./partials/header') %> 
+    <main>
+        <h1>PELIÍCULAS ORDENADASR FECHA</h1>
+        <ul>
+            <% for( let i = 0; i < movies.length; i++ ) { %>
+            <li>
+                <a href="/movies/detail/<%=movies[i].id%>"><%= movies[i].title %> </a> <br>
+                <%= 'RELEASE DATE: ' + movies[i].release_date %> 
+            </li>
+            <% } %>
+            
+        </ul>
+    </main>
     
 <%- include('./partials/bodyEnd.ejs') %> 

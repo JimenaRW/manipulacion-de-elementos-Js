@@ -1,34 +1,38 @@
 <%- include('./partials/head', { title : "Película" }) %> 
 <body>
-    <form class="card formulario">
-        <input type="hidden" name="id">
-        <div>        
-            <label for="title">Título </label>
-            <p><input type="text" name="title" id="title" value="<%= movie.title %>" required></p>
-        </div>
-        <div>
-            <label for="rating">Calificación </label>
-            <p><input type="number" name="rating" id="rating" value="<%= movie.rating %>" required></p>
-        </div>
-        <div>
-        <label for="awards">Premios </label>
-        <p><input type="number" name="awards" id="awards" value="<%= movie.awards %>" required></p>
-        </div>
-        <div>
-            <label for="release_date">Fecha de creación </label>
-            <p><input type="date" name="release_date" id="release_date" value="<%= movie.release_date %>" required></p>
-        </div>
-        <div>
-            <label for="length">Duración </label>
-            <p><input type="number" name="length" id="length" value="<%= movie.length %>" required></p>
-        </div>
-        
-        <br>
-        <div class="action">
-            <button class="botonAgregar" >Editar</button>
-            <button class="botonAgregar">Crear</button>
-            <button class="botonBorrar">Eliminar</button>
-        </div>
-    </form>
+    <%- include('./partials/header') %> 
+    <main>
+        <form class="card formulario">
+            <input type="hidden" name="id">
+            <div>        
+                <label for="title">Título </label>
+                <p><input type="text" name="title" id="title" value="<%= movie.title %>" required></p>
+            </div>
+            <div>
+                <label for="rating">Calificación </label>
+                <p><input type="number" name="rating" id="rating" value="<%= movie.rating %>" required></p>
+            </div>
+            <div>
+            <label for="awards">Premios </label>
+            <p><input type="number" name="awards" id="awards" value="<%= movie.awards %>" required></p>
+            </div>
+            <div>
+                <label for="release_date">Fecha de creación </label>
+                <p><input type="date" name="release_date" id="release_date" value="<%= movie.release_date %>" required></p>
+            </div>
+            <div>
+                <label for="length">Duración </label>
+                <p><input type="number" name="length" id="length" value="<%= movie.length %>" required></p>
+            </div>
+            
+            <br>
+            <div class="action">
+                <button class="botonAgregar" >Editar</button>
+                <button class="botonAgregar">Crear</button>
+                <button class="botonBorrar">Eliminar</button>
+            </div>
+        </form>
+
+    </main>
     
 <%- include('./partials/bodyEnd.ejs') %> 

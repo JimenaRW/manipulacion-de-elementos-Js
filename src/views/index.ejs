@@ -1,16 +1,7 @@
 <%- include('./partials/head', { title }) %> 
   <body class="home">
+    <%- include('./partials/header') %> 
     <main>
-      <div id="menu">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/movies">Listado de Películas</a></li>
-          <li><a href="/movies/add">Agregar una Pelicula</a></li>
-        </ul>
-      </div>
-      <figure class="logoDH">
-        <img src="/img/logo-DH.png" alt="Logo Digital House">
-      </figure>
       <section class="contenido">
         <h1 class="tituloPrincipal"><%= title %></h1>
         <h2 class="subtitulo">Bienvenido </h2>
@@ -18,7 +9,7 @@
       </section>
       <div id="root">
         <h1 class="main">Listado de Películas</h1>
-        <div class="container"></div>
+        
       </div>
       <br><br>
       <section class="informacion">
