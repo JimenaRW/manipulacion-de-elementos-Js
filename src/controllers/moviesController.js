@@ -20,6 +20,9 @@ const moviesController = {
                 res.render('moviesList.ejs', {movies})
             })
     },
+    'fav': (req,res) => {
+        res.render('favoritas')
+    },
     'detail': (req, res) => {
         /* 
         // Para trabajar sin API

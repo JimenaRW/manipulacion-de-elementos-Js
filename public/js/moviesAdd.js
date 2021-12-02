@@ -66,5 +66,5 @@ if(qs('body.movieAdd')) {
          // Fin Agregando interacción con eventos =======================
     
     })
-
+ 
 }

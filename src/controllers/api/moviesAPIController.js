@@ -45,7 +45,6 @@ const moviesAPIController = {
                 let respuesta = {
                     meta: {
                         status: 200,
-                        total: movie.length,
                         url: '/api/movie/' + req.params.id
                     },
                     data: movie
@@ -77,6 +76,7 @@ const moviesAPIController = {
         .catch(error => console.log(error))
     },
     create: (req,res) => {
+        
         Movies
         .create(
             {
@@ -113,46 +113,49 @@ const moviesAPIController = {
         })    
         .catch(error => res.send(error))
     },
-    update: (req,res) => {
+    update: async (req,res) => {
         let movieId = req.params.id;
-        console.log('====================================> lo que viene por req.body ====================================>')
-        console.log(req.body)
-        Movies.update(
-            {
-                title: req.body.title,
-                rating: req.body.rating,
-                awards: req.body.awards,
-                release_date: req.body.release_date,
-                length: req.body.length,
-                genre_id: req.body.genre_id
-            },
-            {
-                where: {id: movieId}
-        })
-        .then(confirm => {
-            let respuesta;
-            if(confirm){
-                respuesta ={
-                    meta: {
-                        status: 200,
-                        total: confirm.length,
-                        url: '/api/movies/update/' + movieId
-                    },
-                    data:confirm
+        
+        try {
+
+            await Movies.update(
+                {
+                    title: req.body.title,
+                    rating: req.body.rating,
+                    awards: req.body.awards,
+                    release_date: req.body.release_date,
+                    length: req.body.length,
+                    genre_id: req.body.genre_id
+                },
+                {
+                    where: {id: movieId}
+            })
+            .then(confirm => {
+                let respuesta;
+                if(confirm){
+                    respuesta ={
+                        meta: {
+                            status: 200,
+                            url: '/api/movies/edit/' + movieId
+                        },
+                        data: confirm
+                    }
+                }else{
+                    respuesta ={
+                        meta: {
+                            status: 204,
+                            url: '/api/movies/edit/' + movieId
+                        },
+                        data: confirm
+                    }
                 }
-            }else{
-                respuesta ={
-                    meta: {
-                        status: 204,
-                        total: confirm.length,
-                        url: '/api/movies/update/' + movieId
-                    },
-                    data:confirm
-                }
-            }
-            res.json(respuesta);
-        })    
-        .catch(error => res.send(error))
+                res.json(respuesta);
+            })    
+            .catch(error => res.send(error))
+
+        } catch (e) { console.log(e
+            
+            )}
     },
     destroy: (req,res) => {
         let movieId = req.params.id;
